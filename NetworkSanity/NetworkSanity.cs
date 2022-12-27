@@ -15,7 +15,7 @@ namespace NetworkSanity
     public static class BuildInfo
     {
         public const string Name = "NetworkSanity EAC-Melon";
-        public const string Author = " Patched by NONE";
+        public const string Author = "Made by RequiDev Patched by NONE";
         public const string Company = null;
         public const string Version = "2.0.0";
         public const string DownloadLink = "https://github.com/pocketnone/NetworkSanity";
@@ -34,6 +34,8 @@ namespace NetworkSanity
         public override void OnApplicationStart()
         {
             Harmony = HarmonyInstance;
+
+            
             IEnumerable<Type> types;
             try
             {
@@ -54,9 +56,11 @@ namespace NetworkSanity
                 var sanitizer = Activator.CreateInstance(t) as ISanitizer;
                 Sanitizers.Add(sanitizer);
                 MelonLogger.Msg($"Added new Sanitizer: {t.Name}");
-                MelonLogger.Msg("POST EAC! THanks to EAC Melon for having Mods back <3\n");
             }
-
+            MelonLogger.Msg("\n");
+            MelonLogger.Msg("POST EAC! THanks to EAC Melon for having Mods back <3\n");
+            MelonLogger.Msg("Patched by NONE\n");
+            MelonLogger.Msg("\n");
             unsafe
             {
                 var originalMethodPtr = *(IntPtr*)(IntPtr)UnhollowerUtils.GetIl2CppMethodInfoPointerFieldForGeneratedMethod(typeof(LoadBalancingClient).GetMethod(nameof(LoadBalancingClient.OnEvent))).GetValue(null);
