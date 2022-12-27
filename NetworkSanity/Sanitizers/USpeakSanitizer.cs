@@ -67,7 +67,7 @@ namespace NetworkSanity.Sanitizers
                     return true;
                 }
 
-                container.Method_Public_Virtual_Final_New_Void_0();
+                container.Method_Public_Virtual_Final_New_Void_1();
                 sourceOffset += offset;
             }
 
