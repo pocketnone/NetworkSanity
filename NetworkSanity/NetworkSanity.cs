@@ -54,7 +54,7 @@ namespace NetworkSanity
                 var sanitizer = Activator.CreateInstance(t) as ISanitizer;
                 Sanitizers.Add(sanitizer);
                 MelonLogger.Msg($"Added new Sanitizer: {t.Name}");
-                MelonLogger.Msg("POST EAC! THanks to EAC Melon for having Mods back <3 If help needed: NONE#0777");
+                MelonLogger.Msg("POST EAC! THanks to EAC Melon for having Mods back <3\n");
             }
 
             unsafe
