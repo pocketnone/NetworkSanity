@@ -142,7 +142,7 @@ namespace NetworkSanity.Sanitizers
                 return false;
             
 
-            var evtLogEntry = obj.TryCast<VRC_EventLog.EventLogEntry>();
+            var evtLogEntry = obj.TryCast<VRC_EventLog.ObjectNPublicInVrInStSiInObSiByVrUnique>();
 
             if (evtLogEntry.field_Private_Int32_1 != eventData.Sender)
             {

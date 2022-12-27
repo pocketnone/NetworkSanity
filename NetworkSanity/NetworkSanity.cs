@@ -14,11 +14,11 @@ namespace NetworkSanity
 {
     public static class BuildInfo
     {
-        public const string Name = "NetworkSanity";
-        public const string Author = "Requi";
+        public const string Name = "NetworkSanity EAC-Melon";
+        public const string Author = " Patched by NONE";
         public const string Company = null;
-        public const string Version = "1.1.7";
-        public const string DownloadLink = "https://github.com/RequiDev/NetworkSanity/";
+        public const string Version = "2.0.0";
+        public const string DownloadLink = "https://github.com/pocketnone/NetworkSanity";
     }
 
     public class NetworkSanity : MelonMod
@@ -54,6 +54,7 @@ namespace NetworkSanity
                 var sanitizer = Activator.CreateInstance(t) as ISanitizer;
                 Sanitizers.Add(sanitizer);
                 MelonLogger.Msg($"Added new Sanitizer: {t.Name}");
+                MelonLogger.Msg("POST EAC! THanks to EAC Melon for having Mods back <3 If help needed: NONE#0777");
             }
 
             unsafe
