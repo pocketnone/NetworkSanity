@@ -1,6 +1,6 @@
 # Disclaimer
 As of 26/07/2022 VRChat released an update which includes a kernel anti-cheat known as [**Easy Anti-Cheat**](https://easy.ac).
-But now [**EAC Melon**](https://thats.gg/melonloader/) is there and we so i bring back this good Mod :)
+But now [**EAC Melon**](https://thats.gg/melonloader/) is there and we bring back this good Mod :)
 
 To VRChat:  
 Come on. You can do better.
