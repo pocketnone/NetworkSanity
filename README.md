@@ -8,6 +8,13 @@ Updated Version from [**NetworkSanity**](https://github.com/RequiDev/NetworkSani
 To VRChat:  
 Come on. You can do better.
 
+# Feature
+
+- check valid RPC
+- FPS Spoof
+- Ping Spoof
+- Event Limiter
+
 # Known Bugs:
 
 - User Flicker
