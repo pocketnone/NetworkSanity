@@ -14,3 +14,4 @@ A EAC-Melon mod for the game VRChat to prevent certain photon "exploits" from af
 # Description
 This mod is supposed to check whether an RPC is valid or not to prevent crashes/freezes and also ratelimits people spamming a lot of them at once.
 Apart from that there are patches that will catch other exploits and block events from people spamming invalid events.
+Its Spoof the FPS and Ping and prevents other clients from knowing about your system.
