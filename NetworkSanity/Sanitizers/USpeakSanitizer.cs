@@ -66,8 +66,8 @@ namespace NetworkSanity.Sanitizers
                     _rateLimiter.BlacklistUser(eventData.Sender);
                     return true;
                 }
-
-                container.Method_Public_Virtual_Final_New_Void_1();
+                //Mehtode Edit
+                container.Method_Public_Virtual_Final_New_Void_2();
                 sourceOffset += offset;
             }
 

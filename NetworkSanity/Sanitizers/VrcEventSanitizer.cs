@@ -60,7 +60,7 @@ namespace NetworkSanity.Sanitizers
                 _rateLimiter.OnlyAllowPerSecond($"G_{rpcKey}", globalLimit);
                 _rateLimiter.OnlyAllowPerSecond(rpcKey, individualLimit);
             }
-            
+
             foreach (var nestedType in typeof(VRC_EventLog).GetNestedTypes())
             {
                 foreach (var methodInfo in nestedType.GetMethods(BindingFlags.Public | BindingFlags.Instance))
@@ -140,8 +140,8 @@ namespace NetworkSanity.Sanitizers
 
             if (obj == null)
                 return false;
-            
 
+            // Methode Edit
             var evtLogEntry = obj.TryCast<VRC_EventLog.ObjectNPublicInVrInStSiInObSiByVrUnique>();
 
             if (evtLogEntry.field_Private_Int32_1 != eventData.Sender)
