@@ -136,10 +136,14 @@ namespace NetworkSanity
             
             //PatchFPS & Ping
             PreferencesCategory = MelonPreferences.CreateCategory("NONEFPS", nameof(NetworkSanity));
-            PreferenceFPS = PreferencesCategory.CreateEntry<float>("SpoofFPS", -1f, "FPS to spoof to (disable with < 0)", (string)null, false, false, (ValueValidator)null, (string)null);
-            PreferencePing = PreferencesCategory.CreateEntry<int>("SpoofPing", -1, "Ping to spoof to (disable with < 0)", (string)null, false, false, (ValueValidator)null, (string)null);
+            PreferenceFPS = PreferencesCategory.CreateEntry<float>("SpoofFPS", -1f, "FPS to spoof", (string)null, false, false, (ValueValidator)null, (string)null);
+            PreferencePing = PreferencesCategory.CreateEntry<int>("SpoofPing", -1, "Ping to spoof", (string)null, false, false, (ValueValidator)null, (string)null);
             try
             {
+                PreferencesCategory.DeleteEntry("SpoofFPS");
+                PreferenceFPS = PreferencesCategory.CreateEntry<float>("SpoofFPS", 0.0f, (string)null, (string)null, false, false, (ValueValidator)null, (string)null);
+                ((MelonBase)this).HarmonyInstance.Patch((MethodBase)typeof(Time).GetProperty("smoothDeltaTime").GetGetMethod(), new HarmonyMethod(typeof(NetworkSanity).GetMethod("PatchFPS", BindingFlags.Static | BindingFlags.NonPublic)), (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null);
+
                 new Thread((ThreadStart)(() =>
                 {
                     try
@@ -147,52 +151,29 @@ namespace NetworkSanity
                         while (true)
                         {
                             Thread.Sleep(1000);
-                            VarianceFPS = -40000000f;
-                            PreferencesCategory.DeleteEntry("SpoofFPS");
-                            PreferenceFPS = PreferencesCategory.CreateEntry<float>("SpoofFPS", 0.0f, (string)null, (string)null, false, false, (ValueValidator)null, (string)null);
-                            ((MelonBase)this).HarmonyInstance.Patch((MethodBase)typeof(Time).GetProperty("smoothDeltaTime").GetGetMethod(), new HarmonyMethod(typeof(NetworkSanity).GetMethod("PatchFPS", BindingFlags.Static | BindingFlags.NonPublic)), (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null);
-                            
+                            VarianceFPS = 10;
+                            PatchFPS(ref VarianceFPS);
                             Thread.Sleep(1000);
-                            VarianceFPS = -30000000f;
-                            PreferencesCategory.DeleteEntry("SpoofFPS");
-                            PreferenceFPS = PreferencesCategory.CreateEntry<float>("SpoofFPS", 0.0f, (string)null, (string)null, false, false, (ValueValidator)null, (string)null);
-                            ((MelonBase)this).HarmonyInstance.Patch((MethodBase)typeof(Time).GetProperty("smoothDeltaTime").GetGetMethod(), new HarmonyMethod(typeof(NetworkSanity).GetMethod("PatchFPS", BindingFlags.Static | BindingFlags.NonPublic)), (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null);
-                            
+                            VarianceFPS = 20;
+                            PatchFPS(ref VarianceFPS);
                             Thread.Sleep(1000);
-                            VarianceFPS = -20000000f;
-                            PreferencesCategory.DeleteEntry("SpoofFPS");
-                            PreferenceFPS = PreferencesCategory.CreateEntry<float>("SpoofFPS", 0.0f, (string)null, (string)null, false, false, (ValueValidator)null, (string)null);
-                            ((MelonBase)this).HarmonyInstance.Patch((MethodBase)typeof(Time).GetProperty("smoothDeltaTime").GetGetMethod(), new HarmonyMethod(typeof(NetworkSanity).GetMethod("PatchFPS", BindingFlags.Static | BindingFlags.NonPublic)), (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null);
-                            
+                            VarianceFPS = 30;
+                            PatchFPS(ref VarianceFPS);
                             Thread.Sleep(1000);
-                            VarianceFPS = -10000000f;
-                            PreferencesCategory.DeleteEntry("SpoofFPS");
-                            PreferenceFPS = PreferencesCategory.CreateEntry<float>("SpoofFPS", 0.0f, (string)null, (string)null, false, false, (ValueValidator)null, (string)null);
-                            ((MelonBase)this).HarmonyInstance.Patch((MethodBase)typeof(Time).GetProperty("smoothDeltaTime").GetGetMethod(), new HarmonyMethod(typeof(NetworkSanity).GetMethod("PatchFPS", BindingFlags.Static | BindingFlags.NonPublic)), (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null);
-                            
+                            VarianceFPS = 40f;
+                            PatchFPS(ref VarianceFPS);
                             Thread.Sleep(1000);
-                            VarianceFPS = 0f;
-                            PreferencesCategory.DeleteEntry("SpoofFPS");
-                            PreferenceFPS = PreferencesCategory.CreateEntry<float>("SpoofFPS", 0.0f, (string)null, (string)null, false, false, (ValueValidator)null, (string)null);
-                            ((MelonBase)this).HarmonyInstance.Patch((MethodBase)typeof(Time).GetProperty("smoothDeltaTime").GetGetMethod(), new HarmonyMethod(typeof(NetworkSanity).GetMethod("PatchFPS", BindingFlags.Static | BindingFlags.NonPublic)), (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null);
-
+                            VarianceFPS = 50f;
+                            PatchFPS(ref VarianceFPS);
                             Thread.Sleep(1000);
-                            VarianceFPS = -10000000f;
-                            PreferencesCategory.DeleteEntry("SpoofFPS");
-                            PreferenceFPS = PreferencesCategory.CreateEntry<float>("SpoofFPS", 0.0f, (string)null, (string)null, false, false, (ValueValidator)null, (string)null);
-                            ((MelonBase)this).HarmonyInstance.Patch((MethodBase)typeof(Time).GetProperty("smoothDeltaTime").GetGetMethod(), new HarmonyMethod(typeof(NetworkSanity).GetMethod("PatchFPS", BindingFlags.Static | BindingFlags.NonPublic)), (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null);
-
+                            VarianceFPS = 40f;
+                            PatchFPS(ref VarianceFPS);
                             Thread.Sleep(1000);
-                            VarianceFPS = -20000000f;
-                            PreferencesCategory.DeleteEntry("SpoofFPS");
-                            PreferenceFPS = PreferencesCategory.CreateEntry<float>("SpoofFPS", 0.0f, (string)null, (string)null, false, false, (ValueValidator)null, (string)null);
-                            ((MelonBase)this).HarmonyInstance.Patch((MethodBase)typeof(Time).GetProperty("smoothDeltaTime").GetGetMethod(), new HarmonyMethod(typeof(NetworkSanity).GetMethod("PatchFPS", BindingFlags.Static | BindingFlags.NonPublic)), (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null);
-                            
+                            VarianceFPS = 30;
+                            PatchFPS(ref VarianceFPS);
                             Thread.Sleep(1000);
-                            VarianceFPS = -30000000f;
-                            PreferencesCategory.DeleteEntry("SpoofFPS");
-                            PreferenceFPS = PreferencesCategory.CreateEntry<float>("SpoofFPS", 0.0f, (string)null, (string)null, false, false, (ValueValidator)null, (string)null);
-                            ((MelonBase)this).HarmonyInstance.Patch((MethodBase)typeof(Time).GetProperty("smoothDeltaTime").GetGetMethod(), new HarmonyMethod(typeof(NetworkSanity).GetMethod("PatchFPS", BindingFlags.Static | BindingFlags.NonPublic)), (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null);
+                            VarianceFPS = 2;
+                            PatchFPS(ref VarianceFPS);
                         }
                         MelonLogger.Msg("FPS Spoof on");
                     }
@@ -210,6 +191,9 @@ namespace NetworkSanity
             }
             try
             {
+                PreferencesCategory.DeleteEntry("SpoofPing");
+                PreferencePing = PreferencesCategory.CreateEntry<int>("SpoofPing", 0, (string)null, (string)null, false, false, (ValueValidator)null, (string)null);
+                ((MelonBase)this).HarmonyInstance.Patch((MethodBase)typeof(PhotonPeer).GetProperty("RoundTripTime").GetGetMethod(), new HarmonyMethod(typeof(NetworkSanity).GetMethod("PatchPing", BindingFlags.Static | BindingFlags.NonPublic)), (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null);
                 ((MelonBase)this).LoggerInstance.Msg("Start Ping Animation");
                 new Thread((ThreadStart)(() =>
                 {
@@ -220,24 +204,16 @@ namespace NetworkSanity
                         {
                             Thread.Sleep(1000);
                             VariancePing = 777;
-                            PreferencesCategory.DeleteEntry("SpoofPing");
-                            PreferencePing = PreferencesCategory.CreateEntry<int>("SpoofPing", 0, (string)null, (string)null, false, false, (ValueValidator)null, (string)null);
-                            ((MelonBase)this).HarmonyInstance.Patch((MethodBase)typeof(PhotonPeer).GetProperty("RoundTripTime").GetGetMethod(), new HarmonyMethod(typeof(NetworkSanity).GetMethod("PatchPing", BindingFlags.Static | BindingFlags.NonPublic)), (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null);
+                            PatchPing(ref VariancePing);                    
                             Thread.Sleep(1000);
                             VariancePing = 77;
-                            PreferencesCategory.DeleteEntry("SpoofPing");
-                            PreferencePing = PreferencesCategory.CreateEntry<int>("SpoofPing", 0, (string)null, (string)null, false, false, (ValueValidator)null, (string)null);
-                            ((MelonBase)this).HarmonyInstance.Patch((MethodBase)typeof(PhotonPeer).GetProperty("RoundTripTime").GetGetMethod(), new HarmonyMethod(typeof(NetworkSanity).GetMethod("PatchPing", BindingFlags.Static | BindingFlags.NonPublic)), (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null);
+                            PatchPing(ref VariancePing);
                             Thread.Sleep(1000);
                             VariancePing = 7;
-                            PreferencesCategory.DeleteEntry("SpoofPing");
-                            PreferencePing = PreferencesCategory.CreateEntry<int>("SpoofPing", 0, (string)null, (string)null, false, false, (ValueValidator)null, (string)null);
-                            ((MelonBase)this).HarmonyInstance.Patch((MethodBase)typeof(PhotonPeer).GetProperty("RoundTripTime").GetGetMethod(), new HarmonyMethod(typeof(NetworkSanity).GetMethod("PatchPing", BindingFlags.Static | BindingFlags.NonPublic)), (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null);
+                            PatchPing(ref VariancePing);
                             Thread.Sleep(1000);
                             VariancePing = 77;
-                            PreferencesCategory.DeleteEntry("SpoofPing");
-                            PreferencePing = PreferencesCategory.CreateEntry<int>("SpoofPing", 0, (string)null, (string)null, false, false, (ValueValidator)null, (string)null);
-                            ((MelonBase)this).HarmonyInstance.Patch((MethodBase)typeof(PhotonPeer).GetProperty("RoundTripTime").GetGetMethod(), new HarmonyMethod(typeof(NetworkSanity).GetMethod("PatchPing", BindingFlags.Static | BindingFlags.NonPublic)), (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null, (HarmonyMethod)null);
+                            PatchPing(ref VariancePing);
                         }
                         MelonLogger.Msg("Ping Spoof on");
                     }

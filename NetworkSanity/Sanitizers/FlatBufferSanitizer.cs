@@ -121,8 +121,9 @@ namespace NetworkSanity.Sanitizers
                 // Methode Change 1
                 var originalMethod = (Il2CppMethodInfo*)(IntPtr)UnhollowerUtils
                     .GetIl2CppMethodInfoPointerFieldForGeneratedMethod(typeof(PoseRecorder)
-                    .GetMethod(nameof(PoseRecorder.Method_Public_Single_Nullable_1_Single_0)))
+                    .GetMethod(nameof(PoseRecorder.Method_Public_byref_HumanPose_0))) 
                     .GetValue(null);
+
                 var originalMethodPtr = *(IntPtr*)originalMethod;
 
                 MelonUtils.NativeHookAttach((IntPtr)(&originalMethodPtr), typeof(FlatBufferSanitizer).GetMethod(nameof(PoseRecorderDispatchedUpdatePatch), BindingFlags.Static | BindingFlags.NonPublic)!.MethodHandle.GetFunctionPointer());
@@ -151,7 +152,9 @@ namespace NetworkSanity.Sanitizers
 
             NetworkSanity.Harmony.Patch(
                 typeof(FlatBufferNetworkSerializer).GetMethod(nameof(FlatBufferNetworkSerializer
-                    .Method_Public_Void_EventData_ArrayOf_Byte_0)), typeof(FlatBufferSanitizer).GetMethod(nameof(FlatBufferNetworkSerializeReceivePatch), BindingFlags.NonPublic | BindingFlags.Static).ToNewHarmonyMethod());
+                    .Method_Public_Void_EventData_ArrayOf_Byte_0)), typeof(FlatBufferSanitizer)
+                    .GetMethod(nameof(FlatBufferNetworkSerializeReceivePatch), BindingFlags.NonPublic | BindingFlags.Static)
+                    .ToNewHarmonyMethod());
         }
 
         private static bool FlatBufferNetworkSerializeReceivePatch(EventData __0)
