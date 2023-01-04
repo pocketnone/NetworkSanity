@@ -178,17 +178,10 @@ namespace NetworkSanity
                         MelonLogger.Msg("FPS Spoof on");
                     }
                     catch (Exception ex)
-                    {
-                        
-                        ((MelonBase)this).LoggerInstance.Error(string.Format("Failed to patch FPS: {0}", (object)ex));
-                    }
+                    { ((MelonBase)this).LoggerInstance.Error(string.Format("Failed to patch FPS: {0}", (object)ex)); }
                 })).Start();
             }
-            catch (Exception ex)
-            {
-           
-                ((MelonBase)this).LoggerInstance.Error(string.Format("Failed to patch FPS: {0}", (object)ex));
-            }
+            catch (Exception ex) { ((MelonBase)this).LoggerInstance.Error(string.Format("Failed to patch FPS: {0}", (object)ex)); }
             try
             {
                 PreferencesCategory.DeleteEntry("SpoofPing");
@@ -222,14 +215,7 @@ namespace NetworkSanity
                         ((MelonBase)this).LoggerInstance.Error(string.Format("Failed to patch Ping: {0}", (object)ex));
                     }
                 })).Start();
-            }
-            catch
-            {
-
-            }
-
-
-
+            } catch { }
         }
 
         private static bool OnEventPatch(LoadBalancingClient loadBalancingClient, EventData eventData)
