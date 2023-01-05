@@ -18,32 +18,81 @@ namespace NetworkSanity.Sanitizers
         private readonly RateLimiter _rateLimiter = new RateLimiter();
         private readonly Dictionary<string, (int, int)> ratelimitValues = new Dictionary<string, (int, int)>()
         {
-            { "Generic", (500, 500) },
-            // { "ReceiveVoiceStatsSyncRPC", (348, 64) },
-            { "InformOfBadConnection", (64, 6) },
-            { "initUSpeakSenderRPC", (256, 6) },
-            { "InteractWithStationRPC", (128, 32) },
-            { "SpawnEmojiRPC", (128, 6) },
-            { "SanityCheck", (256, 32) },
-            { "PlayEmoteRPC", (256, 6) },
-            { "TeleportRPC", (256, 16) },
-            { "CancelRPC", (256, 32) },
-            { "SetTimerRPC", (256, 64) },
-            { "_DestroyObject", (512, 128) },
-            { "_InstantiateObject", (512, 128) },
-            { "_SendOnSpawn", (512, 128) },
-            { "ConfigurePortal", (512, 128) },
-            { "UdonSyncRunProgramAsRPC", (512, 128) }, // <--- Udon is gay
-            { "ChangeVisibility", (128, 12) },
-            { "PhotoCapture", (128, 32) },
-            { "TimerBloop", (128, 16) },
-            { "ReloadAvatarNetworkedRPC", (128, 12) },
-            { "InternalApplyOverrideRPC", (512, 128) },
-            { "AddURL", (64, 6) },
-            { "Play", (64, 6) },
-            { "Pause", (64, 6) },
-            { "SendVoiceSetupToPlayerRPC", (512, 6) },
-            { "SendStrokeRPC", (512, 32) }
+          {
+           "Generic", (500, 500)
+          },
+          {
+            "InformOfBadConnection", (64, 6)
+          },
+          {
+            "initUSpeakSenderRPC", (256, 6)
+          },
+          {
+            "InteractWithStationRPC", (128, 32)
+          },
+          {
+            "SpawnEmojiRPC", (128, 6)
+          },
+          {
+            "SanityCheck", (256, 32)
+          },
+          {
+            "PlayEmoteRPC", (256, 6)
+          },
+          {
+            "TeleportRPC", (256, 16)
+          },
+          {
+            "CancelRPC", (256, 32)
+          },
+          {
+            "SetTimerRPC", (256, 64)
+          },
+          {
+            "_DestroyObject", (512, 128)
+          },
+          {
+            "_InstantiateObject", (512, 128)
+          },
+          {
+            "_SendOnSpawn",(512, 128)
+          },
+          {
+            "ConfigurePortal",(512, 128)
+          },
+          {
+            "UdonSyncRunProgramAsRPC", (512, 128)
+          },
+          {
+            "ChangeVisibility", (128, 12)
+          },
+          {
+            "PhotoCapture", (128, 32)
+          },
+          {
+            "TimerBloop",(128, 16)
+          },
+          {
+            "ReloadAvatarNetworkedRPC", (128, 12)
+          },
+          {
+            "InternalApplyOverrideRPC", (512, 128)
+          },
+          {
+            "AddURL", (64, 6)
+          },
+          {
+            "Play", (64, 6)
+          },
+          {
+            "Pause",(64, 6)
+          },
+          {
+            "SendVoiceSetupToPlayerRPC", (512, 6)
+          },
+          {
+            "SendStrokeRPC", (512, 32)
+          }
         };
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]

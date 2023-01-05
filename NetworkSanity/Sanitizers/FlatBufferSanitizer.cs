@@ -155,11 +155,38 @@ namespace NetworkSanity.Sanitizers
                     .Method_Public_Void_EventData_ArrayOf_Byte_0)), typeof(FlatBufferSanitizer)
                     .GetMethod(nameof(FlatBufferNetworkSerializeReceivePatch), BindingFlags.NonPublic | BindingFlags.Static)
                     .ToNewHarmonyMethod());
+
+            NetworkSanity.Harmony.Patch(
+                typeof(FlatBufferNetworkSerializer).GetMethod(nameof(FlatBufferNetworkSerializer
+                    .Method_Public_Void_EventData_ArrayOf_Byte_0)), typeof(FlatBufferSanitizer)
+                    .GetMethod(nameof(FlatBufferNetworkSerializeReceivePatch13), BindingFlags.NonPublic | BindingFlags.Static)
+                    .ToNewHarmonyMethod());
+
+            NetworkSanity.Harmony.Patch(
+                typeof(FlatBufferNetworkSerializer).GetMethod(nameof(FlatBufferNetworkSerializer
+                    .Method_Public_Void_EventData_ArrayOf_Byte_0)), typeof(FlatBufferSanitizer)
+                    .GetMethod(nameof(FlatBufferNetworkSerializeReceivePatch12), BindingFlags.NonPublic | BindingFlags.Static)
+                    .ToNewHarmonyMethod());
         }
 
         private static bool FlatBufferNetworkSerializeReceivePatch(EventData __0)
         {
             if (__0.Code == 9 && RateLimiter.IsRateLimited(__0.Sender))
+                return false;
+
+            return true;
+        }
+        private static bool FlatBufferNetworkSerializeReceivePatch12(EventData __0)
+        {
+            if (__0.Code == 12 && RateLimiter.IsRateLimited(__0.Sender))
+                return false;
+
+            return true;
+        }
+
+        private static bool FlatBufferNetworkSerializeReceivePatch13(EventData __0)
+        {
+            if (__0.Code == 13 && RateLimiter.IsRateLimited(__0.Sender))
                 return false;
 
             return true;
