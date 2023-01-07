@@ -17,7 +17,6 @@ Come on. You can do better.
 
 # Known Bugs:
 
-- User Flicker
 
 # NetworkSanity
 A EAC-Melon mod for the game VRChat to prevent certain photon "exploits" from affecting you.
